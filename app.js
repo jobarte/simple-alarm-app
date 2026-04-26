@@ -3,12 +3,17 @@ let alarmInterval = null;
 let audioCtx = null;
 let ringing = false;
 
+const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 function updateClock() {
   const now = new Date();
   const h = String(now.getHours()).padStart(2, '0');
   const m = String(now.getMinutes()).padStart(2, '0');
   const s = String(now.getSeconds()).padStart(2, '0');
   document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+  document.getElementById('date').textContent =
+    `${DAYS[now.getDay()]}  ·  ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
 
   if (alarmTime) {
     const current = `${h}:${m}`;
