@@ -9,23 +9,47 @@
 <body>
   <div class="container">
     <h1>Alarm Clock</h1>
-
     <div class="clock" id="clock">00:00:00</div>
     <div class="date" id="date"></div>
 
     <div class="divider"></div>
 
-    <div class="alarm-set">
-      <label>Set Alarm</label>
-      <input type="time" id="alarmTime">
-      <button id="setBtn" onclick="setAlarm()">Set Alarm</button>
+    <!-- アラーム追加フォーム -->
+    <div class="alarm-form">
+      <div class="form-row">
+        <input type="time" id="alarmTime">
+        <input type="text" id="alarmLabel" placeholder="Label (optional)" maxlength="20">
+      </div>
+      <div class="repeat-row">
+        <span class="repeat-label">Repeat</span>
+        <div class="days">
+          <button class="day-btn" data-day="0">S</button>
+          <button class="day-btn" data-day="1">M</button>
+          <button class="day-btn" data-day="2">T</button>
+          <button class="day-btn" data-day="3">W</button>
+          <button class="day-btn" data-day="4">T</button>
+          <button class="day-btn" data-day="5">F</button>
+          <button class="day-btn" data-day="6">S</button>
+        </div>
+      </div>
+      <button id="addBtn" onclick="addAlarm()">+ Add Alarm</button>
     </div>
 
-    <div class="status-wrap">
-      <div class="status" id="status">No alarm set</div>
-    </div>
+    <!-- アラームリスト -->
+    <div class="alarm-list" id="alarmList"></div>
+  </div>
 
-    <button id="cancelBtn" onclick="cancelAlarm()" style="display:none">Cancel Alarm</button>
+  <!-- 鳴動モーダル -->
+  <div class="modal-overlay" id="modal" style="display:none">
+    <div class="modal">
+      <div class="modal-icon">⏰</div>
+      <div class="modal-time" id="modalTime"></div>
+      <div class="modal-label" id="modalLabel"></div>
+      <div class="modal-actions">
+        <button class="snooze-btn" onclick="snooze()">Snooze 5min</button>
+        <button class="dismiss-btn" onclick="dismiss()">Dismiss</button>
+      </div>
+    </div>
   </div>
 
   <script src="app.js"></script>
