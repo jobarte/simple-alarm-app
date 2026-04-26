@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  background: #16213e;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  width: 320px;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  color: #e94560;
+}
+
+.clock {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin-bottom: 32px;
+  color: #fff;
+}
+
+.alarm-set {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.alarm-set label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+input[type="time"] {
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #0f3460;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+button {
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+#setBtn {
+  background: #e94560;
+  color: #fff;
+}
+
+#cancelBtn {
+  background: #444;
+  color: #fff;
+  margin-top: 12px;
+}
+
+.status {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 8px;
+  min-height: 1.2em;
+}
+
+.status.active {
+  color: #4ecca3;
+}
+
+.status.ringing {
+  color: #e94560;
+  font-weight: bold;
+  animation: blink 0.6s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.3; }
+}

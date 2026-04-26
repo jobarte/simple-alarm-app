@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alarm App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Alarm App</h1>
+
+    <div class="clock" id="clock">00:00:00</div>
+
+    <div class="alarm-set">
+      <label>アラーム時刻</label>
+      <input type="time" id="alarmTime">
+      <button id="setBtn" onclick="setAlarm()">セット</button>
+    </div>
+
+    <div class="status" id="status">アラームは設定されていません</div>
+
+    <button id="cancelBtn" onclick="cancelAlarm()" style="display:none">キャンセル</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
