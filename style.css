@@ -285,12 +285,13 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 
 /* ── 共通タイマー表示 ── */
 .timer-display {
-  font-family: 'Orbitron', monospace;
-  font-size: 3rem; font-weight: 900;
-  letter-spacing: 2px;
+  font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  font-size: 1.6rem; font-weight: 500;
+  letter-spacing: -1px;
   color: #fff;
-  margin: 8px 0 24px;
+  margin: 16px 0 24px;
   line-height: 1;
+  overflow: hidden;
 }
 
 .ctrl-btns {
