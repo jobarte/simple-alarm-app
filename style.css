@@ -72,16 +72,52 @@ h1 {
   font-size: 0.75rem;
   color: rgba(255,255,255,0.25);
   letter-spacing: 2px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
-/* フォーム */
+/* ── タブ ── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 4px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab:hover { color: rgba(255,255,255,0.6); }
+
+.tab.active {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+/* タブコンテンツ */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── Alarm タブ ── */
 .alarm-form {
   display: flex;
   flex-direction: column;
@@ -89,10 +125,7 @@ h1 {
   margin-bottom: 28px;
 }
 
-.form-row {
-  display: flex;
-  gap: 10px;
-}
+.form-row { display: flex; gap: 10px; }
 
 input[type="time"],
 input[type="text"] {
@@ -129,7 +162,6 @@ input:focus {
 
 input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 
-/* 繰り返し曜日 */
 .repeat-row {
   display: flex;
   align-items: center;
@@ -144,22 +176,15 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
   white-space: nowrap;
 }
 
-.days {
-  display: flex;
-  gap: 5px;
-  flex: 1;
-  justify-content: flex-end;
-}
+.days { display: flex; gap: 5px; flex: 1; justify-content: flex-end; }
 
 .day-btn {
-  width: 32px;
-  height: 32px;
+  width: 32px; height: 32px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.1);
   background: transparent;
   color: rgba(255,255,255,0.3);
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.7rem; font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
   padding: 0;
@@ -176,11 +201,9 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 #addBtn {
   padding: 13px;
   font-family: 'Orbitron', monospace;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.78rem; font-weight: 700;
   letter-spacing: 2px;
-  border: none;
-  border-radius: 10px;
+  border: none; border-radius: 10px;
   cursor: pointer;
   background: linear-gradient(135deg, #6328fa, #e94560);
   color: #fff;
@@ -191,18 +214,10 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 #addBtn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 28px rgba(99,40,250,0.45); }
 #addBtn:active { transform: translateY(0); }
 
-/* アラームリスト */
-.alarm-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: left;
-}
+.alarm-list { display: flex; flex-direction: column; gap: 10px; text-align: left; }
 
 .alarm-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  display: flex; align-items: center; gap: 14px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 14px;
@@ -211,15 +226,12 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 }
 
 .alarm-item.off { opacity: 0.4; }
-
 .alarm-info { flex: 1; }
 
 .alarm-time-text {
   font-family: 'Orbitron', monospace;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
+  font-size: 1.4rem; font-weight: 700;
+  color: #fff; line-height: 1.2;
 }
 
 .alarm-item.off .alarm-time-text { color: rgba(255,255,255,0.5); }
@@ -227,23 +239,14 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 .alarm-meta {
   font-size: 0.72rem;
   color: rgba(255,255,255,0.3);
-  margin-top: 3px;
-  letter-spacing: 0.5px;
+  margin-top: 3px; letter-spacing: 0.5px;
 }
 
-/* トグルスイッチ */
-.toggle {
-  position: relative;
-  width: 42px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
+.toggle { position: relative; width: 42px; height: 24px; flex-shrink: 0; }
 .toggle input { display: none; }
 
 .toggle-track {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: rgba(255,255,255,0.1);
   border-radius: 100px;
   cursor: pointer;
@@ -257,8 +260,7 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
   position: absolute;
   top: 3px; left: 3px;
   width: 18px; height: 18px;
-  border-radius: 50%;
-  background: #fff;
+  border-radius: 50%; background: #fff;
   transition: transform 0.3s;
   box-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
@@ -266,15 +268,11 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 .toggle input:checked + .toggle-track::after { transform: translateX(18px); }
 
 .delete-btn {
-  background: none;
-  border: none;
+  background: none; border: none;
   color: rgba(255,255,255,0.2);
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 4px;
-  transition: color 0.2s;
-  line-height: 1;
-  flex-shrink: 0;
+  font-size: 1rem; cursor: pointer;
+  padding: 4px; transition: color 0.2s;
+  line-height: 1; flex-shrink: 0;
 }
 .delete-btn:hover { color: #e94560; }
 
@@ -282,19 +280,197 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
   text-align: center;
   color: rgba(255,255,255,0.2);
   font-size: 0.82rem;
-  padding: 20px 0;
-  letter-spacing: 1px;
+  padding: 20px 0; letter-spacing: 1px;
 }
 
-/* 鳴動モーダル */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(8px);
+/* ── 共通タイマー表示 ── */
+.timer-display {
+  font-family: 'Orbitron', monospace;
+  font-size: 3rem; font-weight: 900;
+  letter-spacing: 2px;
+  color: #fff;
+  margin: 8px 0 24px;
+  line-height: 1;
+}
+
+.ctrl-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.ctrl-btn {
+  padding: 12px 28px;
+  border: none; border-radius: 10px;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.ctrl-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.ctrl-btn:active { transform: translateY(0); }
+
+.ctrl-btn.primary {
+  background: linear-gradient(135deg, #6328fa, #e94560);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(99,40,250,0.3);
+  min-width: 100px;
+}
+
+.ctrl-btn.secondary {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ── Stopwatch ── */
+.lap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 160px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.lap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.lap-num { color: rgba(255,255,255,0.3); font-size: 0.7rem; }
+.lap-time { font-family: 'Orbitron', monospace; font-size: 0.9rem; color: #fff; }
+.lap-split { font-family: 'Orbitron', monospace; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+/* ── Timer ── */
+.preset-btns {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.preset-btn {
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.65);
+  font-size: 0.8rem; font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.preset-btn:hover, .preset-btn.active {
+  background: rgba(99,40,250,0.25);
+  border-color: rgba(99,40,250,0.5);
+  color: #fff;
+}
+
+.custom-time-row {
   display: flex;
   align-items: center;
+  gap: 8px;
   justify-content: center;
+  margin-bottom: 20px;
+}
+
+.custom-time-row input[type="number"] {
+  width: 64px;
+  padding: 9px 8px;
+  text-align: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem; font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: #fff; outline: none;
+}
+
+.custom-time-row input[type="number"]::-webkit-inner-spin-button { display: none; }
+
+.time-sep {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem; color: rgba(255,255,255,0.4);
+}
+
+.ctrl-btn-sm {
+  padding: 9px 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.65);
+  font-size: 0.75rem; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ctrl-btn-sm:hover { background: rgba(99,40,250,0.2); color: #fff; }
+
+/* ── Pomodoro ── */
+.pom-phase {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.pom-phase.work { color: #e94560; }
+.pom-phase.break { color: #4ecca3; }
+
+.pom-cycles {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.pom-settings {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.pom-setting-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.pom-setting-row input[type="number"] {
+  width: 44px;
+  padding: 6px;
+  text-align: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.85rem; font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  color: #fff; outline: none;
+}
+
+.pom-setting-row input[type="number"]::-webkit-inner-spin-button { display: none; }
+
+/* ── モーダル ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
   z-index: 100;
 }
 
@@ -303,8 +479,7 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
   border: 1px solid rgba(233,69,96,0.3);
   border-radius: 24px;
   padding: 40px 32px;
-  text-align: center;
-  width: 300px;
+  text-align: center; width: 300px;
   box-shadow: 0 0 60px rgba(233,69,96,0.2);
   animation: modalIn 0.3s ease;
 }
@@ -315,8 +490,7 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 }
 
 .modal-icon {
-  font-size: 3rem;
-  margin-bottom: 16px;
+  font-size: 3rem; margin-bottom: 16px;
   animation: shake 0.5s infinite;
 }
 
@@ -327,30 +501,23 @@ input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
 
 .modal-time {
   font-family: 'Orbitron', monospace;
-  font-size: 2.4rem;
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 6px;
+  font-size: 2.4rem; font-weight: 900;
+  color: #fff; margin-bottom: 6px;
 }
 
 .modal-label {
   font-size: 0.85rem;
   color: rgba(255,255,255,0.4);
-  margin-bottom: 28px;
-  min-height: 1em;
+  margin-bottom: 28px; min-height: 1em;
 }
 
 .modal-actions { display: flex; gap: 10px; }
 
 .snooze-btn, .dismiss-btn {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.2s;
+  flex: 1; padding: 12px;
+  border: none; border-radius: 10px;
+  font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; transition: opacity 0.2s;
 }
 
 .snooze-btn { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }

@@ -14,39 +14,102 @@
 
     <div class="divider"></div>
 
-    <!-- アラーム追加フォーム -->
-    <div class="alarm-form">
-      <div class="form-row">
-        <input type="time" id="alarmTime">
-        <input type="text" id="alarmLabel" placeholder="Label (optional)" maxlength="20">
-      </div>
-      <div class="repeat-row">
-        <span class="repeat-label">Repeat</span>
-        <div class="days">
-          <button class="day-btn" data-day="0">S</button>
-          <button class="day-btn" data-day="1">M</button>
-          <button class="day-btn" data-day="2">T</button>
-          <button class="day-btn" data-day="3">W</button>
-          <button class="day-btn" data-day="4">T</button>
-          <button class="day-btn" data-day="5">F</button>
-          <button class="day-btn" data-day="6">S</button>
-        </div>
-      </div>
-      <button id="addBtn" onclick="addAlarm()">+ Add Alarm</button>
+    <!-- タブナビゲーション -->
+    <div class="tabs">
+      <button class="tab active" data-tab="alarm">Alarm</button>
+      <button class="tab" data-tab="stopwatch">Stopwatch</button>
+      <button class="tab" data-tab="timer">Timer</button>
+      <button class="tab" data-tab="pomodoro">Pomodoro</button>
     </div>
 
-    <!-- アラームリスト -->
-    <div class="alarm-list" id="alarmList"></div>
+    <!-- Alarm タブ -->
+    <div class="tab-content active" id="tab-alarm">
+      <div class="alarm-form">
+        <div class="form-row">
+          <input type="time" id="alarmTime">
+          <input type="text" id="alarmLabel" placeholder="Label (optional)" maxlength="20">
+        </div>
+        <div class="repeat-row">
+          <span class="repeat-label">Repeat</span>
+          <div class="days">
+            <button class="day-btn" data-day="0">S</button>
+            <button class="day-btn" data-day="1">M</button>
+            <button class="day-btn" data-day="2">T</button>
+            <button class="day-btn" data-day="3">W</button>
+            <button class="day-btn" data-day="4">T</button>
+            <button class="day-btn" data-day="5">F</button>
+            <button class="day-btn" data-day="6">S</button>
+          </div>
+        </div>
+        <button id="addBtn" onclick="addAlarm()">+ Add Alarm</button>
+      </div>
+      <div class="alarm-list" id="alarmList"></div>
+    </div>
+
+    <!-- Stopwatch タブ -->
+    <div class="tab-content" id="tab-stopwatch">
+      <div class="timer-display" id="swDisplay">00:00:00.00</div>
+      <div class="ctrl-btns">
+        <button class="ctrl-btn secondary" onclick="resetStopwatch()">Reset</button>
+        <button class="ctrl-btn primary" id="swStartBtn" onclick="toggleStopwatch()">Start</button>
+        <button class="ctrl-btn secondary" onclick="lapStopwatch()">Lap</button>
+      </div>
+      <div class="lap-list" id="lapList"></div>
+    </div>
+
+    <!-- Timer タブ -->
+    <div class="tab-content" id="tab-timer">
+      <div class="timer-display" id="timerDisplay">00:00</div>
+      <div class="preset-btns">
+        <button class="preset-btn" onclick="setPreset(60)">1 min</button>
+        <button class="preset-btn" onclick="setPreset(300)">5 min</button>
+        <button class="preset-btn" onclick="setPreset(600)">10 min</button>
+        <button class="preset-btn" onclick="setPreset(1500)">25 min</button>
+      </div>
+      <div class="custom-time-row">
+        <input type="number" id="customMin" placeholder="min" min="0" max="99">
+        <span class="time-sep">:</span>
+        <input type="number" id="customSec" placeholder="sec" min="0" max="59">
+        <button class="ctrl-btn-sm" onclick="setCustomTimer()">Set</button>
+      </div>
+      <div class="ctrl-btns">
+        <button class="ctrl-btn secondary" onclick="resetTimer()">Reset</button>
+        <button class="ctrl-btn primary" id="timerStartBtn" onclick="toggleTimer()">Start</button>
+      </div>
+    </div>
+
+    <!-- Pomodoro タブ -->
+    <div class="tab-content" id="tab-pomodoro">
+      <div class="pom-phase" id="pomPhaseLabel">Work</div>
+      <div class="timer-display" id="pomDisplay">25:00</div>
+      <div class="pom-cycles" id="pomCyclesLabel">Cycle 1</div>
+      <div class="ctrl-btns">
+        <button class="ctrl-btn secondary" onclick="resetPomodoro()">Reset</button>
+        <button class="ctrl-btn primary" id="pomStartBtn" onclick="togglePomodoro()">Start</button>
+      </div>
+      <div class="pom-settings">
+        <div class="pom-setting-row">
+          <label>Work</label>
+          <input type="number" id="pomWorkMin" value="25" min="1" max="60">
+          <span>min</span>
+        </div>
+        <div class="pom-setting-row">
+          <label>Break</label>
+          <input type="number" id="pomBreakMin" value="5" min="1" max="30">
+          <span>min</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- 鳴動モーダル -->
   <div class="modal-overlay" id="modal" style="display:none">
     <div class="modal">
-      <div class="modal-icon">⏰</div>
+      <div class="modal-icon" id="modalIcon">⏰</div>
       <div class="modal-time" id="modalTime"></div>
       <div class="modal-label" id="modalLabel"></div>
       <div class="modal-actions">
-        <button class="snooze-btn" onclick="snooze()">Snooze 5min</button>
+        <button class="snooze-btn" id="snoozeBtn" onclick="snooze()">Snooze 5min</button>
         <button class="dismiss-btn" onclick="dismiss()">Dismiss</button>
       </div>
     </div>
